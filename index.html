@@ -42,10 +42,38 @@
             stroke: #000;
         }
 
+        path.ground {
+            stroke-width: 6px;
+        }
+
+        path.wire {
+            stroke-width: 2px;
+        }
+
+        /*path.select {
+            stroke-width: 4px;
+            stroke: #f00;
+        }*/
+
         rect {
             fill: #fff;
             stroke: #000;
-            stroke-width: 2;
+            stroke-width: 2px;
+        }
+
+        rect.r {
+            width: 300px;
+            height: 100px;
+        }
+
+        rect.rr {
+            width: 100px;
+            height: 300px;
+        }
+
+        circle.dot {
+            fill: #000;
+            r: 6px;
         }
 
         text {
@@ -54,10 +82,9 @@
             dominant-baseline: middle;
         }
 
-        .sub {
+        tspan.sub {
             vertical-align: sub;
             font-size: smaller;
-            dy: 5;
         }
     </style>
 </head>
@@ -72,15 +99,49 @@
             elementy elektroniczne.
         </p>
         <p>
-            Zaczniemy od najprostszej rzeczy, czyli jednego opornika. Oznaczmy jego opór jako \(R_1\).
+            Zaczniemy od najprostszej rzeczy, czyli jednego opornika. Oznaczmy jego opór jako \(R_1 = R\).
         </p>
         <svg viewBox="0 -500 1000 500">
-            <path stroke-width="4" d="M100, -50L200,-150" />
-            <path stroke-width="4" d="M800, -50L900,-150" />
-            <path stroke-width="2" d="M150,-100L150,-250L850,-250L850,-100" />
-            <rect x="350" y="-300" width="300" height="100" />
-            <text x="500" y="-250">R<tspan class="sub">1</tspan></text>
+            <path class="ground" d="M100, -50L200,-150" />
+            <path class="ground" d="M800, -50L900,-150" />
+            <path class="wire" d="M150,-100v-150h700v150" />
+            <rect class="r" x="350" y="-300" />
+            <text class="r" x="500" y="-250">R<tspan class="sub" dy="10">1</tspan></text>
         </svg>
+        <p>
+            Podłączając miernik do jednego opornika spodziewamy się, że odczytamy wartość \(R_{Z_0} = R\).
+        </p>
+        <p>
+            Po dokonaniu pierwszego pomiaru spróbujmy skonstruować "drabinkę" przez dodanie następnych dwóch oporników
+            o oporach \(R_2=R_3=R\).
+        </p>
+        <svg viewBox="0 -1100 1000 1100">
+            <path class="ground" d="M100,-50l100,-100" />
+            <path class="ground" d="M800,-50l100,-100" />
+            <path class="wire" d="M150,-100v-150h700v150" />
+            <rect x="350" y="-300" class="r" />
+            <text x="350" y="-300" dx="150" dy="50">R<tspan class="sub" dy="10">3</tspan></text>
+            <circle class="dot" cx="150" cy="-250" />
+            <circle class="dot" cx="850" cy="-250" />
+            <path class="wire" d="M150,-250v-700h700v700" />
+            <rect x="800" y="-750" class="rr" />
+            <text x="800" y="-750" dx="50" dy="150">R<tspan class="sub" dy="10">2</tspan></text>
+            <rect x="350" y="-1000" class="r" />
+            <text x="350" y="-1000" dx="150" dy="50">R<tspan class="sub" dy="10">1</tspan></text>
+            <!--<path class="select" d="" />-->
+        </svg>
+        <p>
+            Spróbujmy policzyć opór zastępczy takiego układu. Możemy policzyć opór zastępczy oporników \(R_1\)
+            i \(R_2\) połączonych szeregowo:
+            $$ R_{12} = R_1 + R_2 = 2R $$
+            Następnie ten opór jest połączony równolegle z opornikiem \(R_3\):
+            $$ \frac{1}{R_{Z_1}} = \frac{1}{R_{12}} + \frac{1}{R_3} = \frac{1}{2R} + \frac{1}{R} = \frac{3}{2R} $$
+            Odrawacając ułamki dostajemy:
+            $$ R_{Z_1} = \frac{2}{3} R $$
+        </p>
+        <p>
+            To dopiero początek naszej zabawy, spróbujmy dorysować kolejny szczebel naszej drabinki.
+        </p>
     </div>
 </body>
 
