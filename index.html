@@ -13,7 +13,7 @@
             background-color: #777;
             margin: 0;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
-            font-size: 1.5em;
+            font-size: min(3vw, 25px);
         }
 
         h1 {
@@ -27,6 +27,10 @@
             padding: 1em;
             border: solid #000 1px;
             background-color: #ccc;
+        }
+
+        footer {
+            font-size: smaller;
         }
 
         svg {
@@ -93,13 +97,13 @@
     <div class="container">
         <h1>Liczby Fibonacciego w opornikach</h1>
         <p>
-            Słyszałeś może o liczbach Fibonacciego i złotej proporcji? Być może wiesz, że konstruując różne rzeczy
-            można dopatrzeć się złotej liczby praktycznie wszędzie. Chciałbym pokazać Ci jak za pomocą dużej ilości
-            oporników o tym samym oporze oraz prostego miernika, możesz zobaczyć ją na własne oczy lutując podstawowe
-            elementy elektroniczne.
+            Słyszałeś może o&nbsp;liczbach Fibonacciego i&nbsp;złotej proporcji? Być może wiesz, że&nbsp;konstruując
+            różne rzeczy można dopatrzeć się złotej liczby praktycznie wszędzie. Chciałbym pokazać Ci jak za pomocą
+            dużej ilości oporników o&nbsp;tym samym oporze oraz prostego miernika, możesz&nbsp;zobaczyć ją na własne
+            oczy lutując podstawowe elementy elektroniczne.
         </p>
         <p>
-            Zaczniemy od najprostszej rzeczy, czyli jednego opornika. Oznaczmy jego opór jako \(R_1 = R\).
+            Zaczniemy od najprostszej rzeczy, czyli&nbsp;jednego opornika. Oznaczmy jego opór jako \(R_1 = R\).
         </p>
         <svg viewBox="0 -500 1000 500">
             <path class="ground" d="M100, -50L200,-150" />
@@ -109,11 +113,11 @@
             <text class="r" x="500" y="-250">R<tspan class="sub" dy="10">1</tspan></text>
         </svg>
         <p>
-            Podłączając miernik do jednego opornika spodziewamy się, że odczytamy wartość \(R_{Z_0} = R\).
+            Podłączając miernik do jednego opornika spodziewamy się, że&nbsp;odczytamy wartość \(R_{Z_0} = R\).
         </p>
         <p>
             Po dokonaniu pierwszego pomiaru spróbujmy skonstruować "drabinkę" przez dodanie następnych dwóch oporników
-            o oporach \(R_2=R_3=R\).
+            o&nbsp;oporach \(R_2=R_3=R\).
         </p>
         <svg viewBox="0 -1100 1000 1100">
             <path class="ground" d="M100,-50l100,-100" />
@@ -132,16 +136,112 @@
         </svg>
         <p>
             Spróbujmy policzyć opór zastępczy takiego układu. Możemy policzyć opór zastępczy oporników \(R_1\)
-            i \(R_2\) połączonych szeregowo:
+            i&nbsp;\(R_2\) połączonych szeregowo:
+
             $$ R_{12} = R_1 + R_2 = 2R $$
-            Następnie ten opór jest połączony równolegle z opornikiem \(R_3\):
+
+            Następnie ten opór jest połączony równolegle z&nbsp;opornikiem&nbsp;\(R_3\):
+
             $$ \frac{1}{R_{Z_1}} = \frac{1}{R_{12}} + \frac{1}{R_3} = \frac{1}{2R} + \frac{1}{R} = \frac{3}{2R} $$
+
             Odrawacając ułamki dostajemy:
+
             $$ R_{Z_1} = \frac{2}{3} R $$
         </p>
         <p>
             To dopiero początek naszej zabawy, spróbujmy dorysować kolejny szczebel naszej drabinki.
         </p>
+        <svg viewBox="0 -1800 1000 1800">
+            <path class="ground" d="M100,-50l100,-100" />
+            <path class="ground" d="M800,-50l100,-100" />
+            <path class="wire" d="M150,-100v-150h700v150" />
+            <rect x="350" y="-300" class="r" />
+            <text x="350" y="-300" dx="150" dy="50">R<tspan class="sub" dy="10">5</tspan></text>
+            <circle class="dot" cx="150" cy="-250" />
+            <circle class="dot" cx="850" cy="-250" />
+            <path class="wire" d="M150,-250v-700h700v700" />
+            <rect x="800" y="-750" class="rr" />
+            <text x="800" y="-750" dx="50" dy="150">R<tspan class="sub" dy="10">4</tspan></text>
+            <rect x="350" y="-1000" class="r" />
+            <text x="350" y="-1000" dx="150" dy="50">R<tspan class="sub" dy="10">3</tspan></text>
+            <circle class="dot" cx="150" cy="-950" />
+            <circle class="dot" cx="850" cy="-950" />
+            <path class="wire" d="M150,-950v-700h700v700" />
+            <rect x="800" y="-1450" class="rr" />
+            <text x="800" y="-1450" dx="50" dy="150">R<tspan class="sub" dy="10">2</tspan></text>
+            <rect x="350" y="-1700" class="r" />
+            <text x="350" y="-1700" dx="150" dy="50">R<tspan class="sub" dy="10">1</tspan></text>
+            <!--<path class="select" d="" />-->
+        </svg>
+        <p>
+            By uprościć trochę nasze obliczenia, zauważmy, że&nbsp;opór zastępczy jednej części naszego układu już
+            obliczyliśmy. Oznaczyliśmy wcześniej opór zastępczy części składającej się z oporników \(R_1, R_2, R_3\)
+            jako \(R_{Z_1}\) i&nbsp;możemy użyć go w&nbsp;dalszych obliczeniach.
+        </p>
+        <p>
+            Połączmy teraz \(R_{Z_1}\) szeregowo z&nbsp;\(R_4\) i&nbsp;równolegle z&nbsp;\(R_5\):
+
+            $$ R_{Z_2}
+            = \frac{1}{\frac{1}{R_{Z_1}+R_4}+\frac{1}{R_5}}
+            = \frac{1}{\frac{1}{\frac{2}{3} R + R}+\frac{1}{R}}
+            = \frac{1}{\frac{3}{5 R}+\frac{1}{R}}
+            = \frac{1}{\frac{8}{5 R}} $$
+
+            $$ R_{Z_2} = \frac{5}{8} R $$
+
+            Zauważmy, że&nbsp;dokładając kolejne szczeble naszej drabinki, będziemy powtarzać identyczne obliczenia.
+            By&nbsp;je jeszcze bardziej uprościć, dodatkowo oznaczmy przez \(p_n\) i&nbsp;\(q_n\) licznik
+            i&nbsp;mianownik współczynnika obok \(R\) liczby \(R_{Z_n}\):
+
+            $$ \frac{p_n}{q_n} R = R_{Z_n}$$
+
+            Wtedy:
+
+            $$ R_{Z_{n+1}}
+            = \frac{1}{\frac{1}{R_{Z_n}+R}+\frac{1}{R}}
+            = \frac{1}{\frac{1}{\frac{p_n}{q_n}R+R}+\frac{1}{R}}
+            = \frac{1}{\frac{1}{\frac{p_n+q_n}{q_n} R}+\frac{1}{R}} $$
+
+            $$ R_{Z_{n+1}}
+            = \frac{1}{\frac{q_n}{(p_n+q_n) R}+\frac{1}{R}}
+            = \frac{1}{\frac{q_n+p_n+q_n}{(p_n+q_n) R}}
+            = \frac{p_n+q_n}{p_n+2q_n} R \tag{♡}\label{♡} $$
+
+            Teraz możemy łatwo wyliczyć:
+
+            $$ R_{Z_3} = \frac{p_2+q_2}{p_2+2q_2} R = \frac{5+8}{5+2\cdot8} R = \frac{13}{21} R $$
+
+            Ale zatrzymajmy się na chwilę...
+        </p>
+        <p>
+            Czy liczby \(\{p_1,q_1,p_2,q_2,...\} = \{1,1,2,3,5,8,13,21,...\}\) tworzą ciąg Fibonacciego?
+        </p>
+        <p>
+            Gdyby tak było to moglibyśmy jednoznacznie wyliczyć \(p_{n+1}\) i \(q_{n+1}\) za pomocą \(p_n\) i \(q_n\):
+
+            $$ \begin{cases}
+            p_{n+1} = p_n + q_n \\
+            q_{n+1} = q_n + p_{n+1} = q_n + p_n + q_n = p_n + 2q_n
+            \end{cases} $$
+
+            Gdyby udało nam się udowodnić coś takiego... ale przecież to dokładnie wynika z&nbsp;\(\eqref{♡}\)!
+        </p>
+        <p>
+            Wniosek: liczniki i&nbsp;mianowniki stosunków oporów zastępczych drabinek o&nbsp;zwiększającej się ilości
+            szczebli do oporu pojedyńczego opornika tworzą ciąg Fibonacciego.
+        </p>
+        <p>
+            Wiedząc o tym, że&nbsp;stosunek kolejnych liczb Fibonacciego dąży do złotej liczby, możemy powiedzieć,
+            że&nbsp;opór zastępczy drabinki o&nbsp;ilości szczebli dążącej do&nbsp;nieskończoności wynosi:
+
+            $$ \lim_{n\to\infty} R_{Z_n} = \lim_{n\to\infty} \frac{p_n}{q_n}R = \frac{1}{\phi}R = (\phi - 1)R = \Phi R
+            $$
+
+            $$ \lim_{n\to\infty} R_{Z_n} = R \cdot 0.61803... $$
+        </p>
+        <footer>
+            Napisał, złożył, opracował Marcin Zepp zainspirowany przez prof.&nbsp;Bogusława&nbsp;Lanusznego.
+        </footer>
     </div>
 </body>
 
