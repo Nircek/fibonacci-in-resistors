@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liczby Fibonacciego w opornikach</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            background-color: #777;
+            margin: 0;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 1.5em;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            min-height: calc(100vh - 2em - 2px);
+            margin: 0 auto;
+            padding: 1em;
+            border: solid #000 1px;
+            background-color: #ccc;
+        }
+
+        svg {
+            display: block;
+            margin: 0 auto;
+            max-height: max(50vh, 500px);
+            max-width: min(80vw, 800px);
+            background-color: white;
+        }
+
+        path {
+            fill-opacity: 0;
+            stroke: #000;
+        }
+
+        rect {
+            fill: #fff;
+            stroke: #000;
+            stroke-width: 2;
+        }
+
+        text {
+            font-size: 1.5em;
+            text-anchor: middle;
+            dominant-baseline: middle;
+        }
+
+        .sub {
+            vertical-align: sub;
+            font-size: smaller;
+            dy: 5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Liczby Fibonacciego w opornikach</h1>
+        <p>
+            Słyszałeś może o liczbach Fibonacciego i złotej proporcji? Być może wiesz, że konstruując różne rzeczy
+            można dopatrzeć się złotej liczby praktycznie wszędzie. Chciałbym pokazać Ci jak za pomocą dużej ilości
+            oporników o tym samym oporze oraz prostego miernika, możesz zobaczyć ją na własne oczy lutując podstawowe
+            elementy elektroniczne.
+        </p>
+        <p>
+            Zaczniemy od najprostszej rzeczy, czyli jednego opornika. Oznaczmy jego opór jako \(R_1\).
+        </p>
+        <svg viewBox="0 -500 1000 500">
+            <path stroke-width="4" d="M100, -50L200,-150" />
+            <path stroke-width="4" d="M800, -50L900,-150" />
+            <path stroke-width="2" d="M150,-100L150,-250L850,-250L850,-100" />
+            <rect x="350" y="-300" width="300" height="100" />
+            <text x="500" y="-250">R<tspan class="sub">1</tspan></text>
+        </svg>
+    </div>
+</body>
+
+</html>
